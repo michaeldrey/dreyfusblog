@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://dreyfus.dev/",
+	site: "https://dreyfus.netlify.app/",
 	base: "/",
 	integrations: [sitemap()],
 	markdown: {
