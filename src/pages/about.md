@@ -1,9 +1,5 @@
-Welcome to this blog template by [cassidoo](https://cassidoo.co)!
+heyoo! I'm mike and I build a lot of infrastructure during the day, and game and fiddle with code at night. 
 
-It's using Astro and TinaCMS. You can [clone it on GitHub](https://github.com/cassidoo/blahg) to use it for yourself, and see how it works! I would _love_ if you told me when you do use it, I love seeing variations on it!
+I'm a DevOps engineering (officially I'm a Senior Systems Development Engineer but that's a mouthful). I'm a jack of all trades but I specialize in building infrastructure automation for AWS. In my free time I play a variety of video games, touch grass by hiking, and getting lost in the endless scroll of reels.
 
-The tags at the bottom of the page are dynamically generated. The more tags you use, the more tags are added to the list! Posts are simple markdown files.
-
-You should also check out [my newsletter](https://cassidoo.co/newsletter), or my word game [Jumblie](https://jumblie.com/?utm_campaign=blahgtmp&utm_source=github), or my [GitHub profile](https://github.com/cassidoo). Or don't. Follow your dreams.
-
-Enjoy!
+For now this site is a work in progress. End goal is to have a blog about stuff I work on, thoughts about working in the corporate world, and idk whatever i'm feeling.
