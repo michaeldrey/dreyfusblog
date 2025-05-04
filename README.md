@@ -2,9 +2,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5da286f6-4221-457a-93c2-97ce0b6655c1/deploy-status)](https://app.netlify.com/sites/dreyfus/deploys)
 
-## Using this Blog
-To use, either
-
 ## See the site directly
 
 [dreyfus.netlify.app](https://dreyfus.netlify.app/)
