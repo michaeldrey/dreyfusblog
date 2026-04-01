@@ -9,7 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 
 // Credit to @rachsmithcodes for helping out my lil ol brain
 export async function getStaticPaths() {
-	let posts = await Astro.glob(`../../posts/*.md`);
+	let posts = Object.values(import.meta.glob("../../posts/*.md", { eager: true }));
 	const tags = posts.reduce((allTags, post) => {
 		const postTags = post.frontmatter.tags;
 		if (postTags) {

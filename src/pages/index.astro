@@ -9,7 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import { Content as About } from "./about.md";
 import getTags from "../scripts/getTags";
 
-const posts = await Astro.glob("../posts/*.md");
+const posts = Object.values(import.meta.glob("../posts/*.md", { eager: true }));
 
 const tags = getTags(posts);
 ---

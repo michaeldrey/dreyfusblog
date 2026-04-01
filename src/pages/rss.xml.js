@@ -20,7 +20,6 @@ export const GET = () =>
 				title: post.frontmatter.title,
 				pubDate: post.frontmatter.added,
 				description: post.frontmatter.description,
-				content: post.compiledContent(),
 				customData: `<updated>${
 					post.frontmatter.updated ? post.frontmatter.updated : ""
 				}</updated>`,
