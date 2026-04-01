@@ -19,19 +19,33 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check if TinaCMS packages changed
+        id: check
+        run: |
+          if git diff origin/main -- package.json | grep -qE '"(@tinacms/|tinacms)'; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.check.outputs.changed == 'true'
         with:
           node-version: "22"
 
-      - run: npm install
+      - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: npm install
 
       - name: Regenerate tina-lock.json
+        if: steps.check.outputs.changed == 'true'
         run: npx tinacms build
         env:
           TINACLIENTID: ${{ secrets.TINACLIENTID }}
           TINATOKEN: ${{ secrets.TINATOKEN }}
 
       - name: Commit tina-lock.json if changed
+        if: steps.check.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
