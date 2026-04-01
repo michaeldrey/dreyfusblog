@@ -1,0 +1,40 @@
+name: Regenerate tina-lock.json
+
+on:
+  pull_request:
+    paths:
+      - "package.json"
+      - "package-lock.json"
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-tina-lock:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - run: npm ci
+
+      - name: Regenerate tina-lock.json
+        run: npx tinacms build
+        env:
+          TINACLIENTID: ${{ secrets.TINACLIENTID }}
+          TINATOKEN: ${{ secrets.TINATOKEN }}
+
+      - name: Commit tina-lock.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tina/tina-lock.json
+          git diff --cached --quiet || git commit -m "Regenerate tina-lock.json"
+          git push
