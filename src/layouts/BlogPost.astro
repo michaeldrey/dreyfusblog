@@ -6,11 +6,11 @@ import ColorScript from "../components/ColorScript.astro";
 import Tags from "../components/Tags.astro";
 import getTags from "../scripts/getTags";
 
-const posts = await Astro.glob("../posts/*.md");
+const posts = Object.values(import.meta.glob("../posts/*.md", { eager: true }));
 const allTags = getTags(posts);
 
 let {
-	content: { title, description, added, updated, tags, heroImage },
+	frontmatter: { title, description, added, updated, tags, heroImage },
 } = Astro.props;
 
 added = new Date(added).toLocaleDateString(

@@ -1,7 +1,7 @@
 ---
 // Credit to @rachsmithcodes for this function
 export async function getStaticPaths() {
-	let posts = await Astro.glob(`../../posts/*.md`);
+	let posts = Object.values(import.meta.glob("../../posts/*.md", { eager: true }));
 
 	return posts.map((post) => {
 		return {
